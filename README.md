@@ -6,4 +6,4 @@ A **Room management system** that enables admin to validate the process of stude
 
 > It may sound easy but it's actually hard. 
 > It is hard but we must fight.
-> We must fight because we _chose_ to.
+> We must fight because we _choose_ to.
