@@ -1,0 +1,45 @@
+# ERD DATA
+
+CREATE TABLE `APPLCATION` (
+  `application_id` int(6),
+  `first_name` varchar(100),
+  `middle_name` varchar(100),
+  `surname` varchar(100),
+  `suffix` varchar(2),
+  `age` int(2),
+  `birthday` date,
+  `student_number` int(6),
+  `program` varchar(200),
+  `year_level` int(1),
+  PRIMARY KEY (`application_id`)
+);
+
+CREATE TABLE `DORMMEMBER` (
+  `membership_id` int(6),
+  `room_number` int(3),
+  `bed_number` int(2),
+  PRIMARY KEY (`membership_id`, `bed_number`)
+);
+
+CREATE TABLE `PERSONAL MESSAGE` (
+  `memship_id` <type>,
+  `message` <type>
+);
+
+CREATE TABLE `GROUP MESSAGE` (
+  `membership_id` <type>
+);
+
+CREATE TABLE `FORUM/HALL` (
+  `content` varchar(10000),
+  `id_post_number` int(9),
+  PRIMARY KEY (`content`, `id_post_number`)
+);
+
+CREATE TABLE `CONTENT` (
+  `id_post_number` int(9),
+  `content` varchar(10000),
+  `date_posted` datetime,
+  `membership_id` int(6)
+);
+
