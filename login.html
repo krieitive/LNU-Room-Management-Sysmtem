@@ -1,0 +1,60 @@
+{% block css %}
+<style>
+  body {
+    background-color: #002b36; /* Dark base color */
+    font-family: 'Arial', sans-serif;
+    padding: 70px 70px;
+    display: flex;
+    overflow: auto;/* Prevent scrollbars from appearing when sidebar is hidden */
+}
+</style>
+{% endblock css %}
+
+{% block title %}
+<title>Login | LMRS</title>
+{% endblock title %}
+
+{% block body %}
+<div class="container mt-3">
+<img src="/static/images/Relaxing water GIF.gif" alt="water">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h1 class="text-center bg-success text-white">Login Here!</h1><br>
+
+            {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+              <div class="container mt-3">
+                {% for category, message in messages %}
+                  <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                {% endfor %}
+              </div>
+            {% endif %}
+          {% endwith %}
+            
+            <form action="/login" method="POST">
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+            
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password" required>
+                </div>
+            
+                <button type="submit" class="btn btn-success btn-lg btn-block">Submit</button>
+            </form>            
+            <br>
+                Not a user <a href = "/signup">SignUp</a>
+            </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>
+{% endblock body %}
+

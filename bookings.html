@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Bookings
+{% endblock title %}
+
+{% block body %}
+<div class="main-content">
+    <div class="container mt-3">
+        <h1 class="text-center booking-title">Book Your Room</h1>
+
+        <div class="row">
+            <!-- Booking Form Section -->
+            <div class="booking-form-column">
+                <div class="form-container">
+                    <h4 class="text-center form-title">Reserve a Slot</h4>
+
+                    {% with messages=get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                                {{ message }}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+
+                    <form action="/bookings" method="post" class="p-4 rounded booking-form">
+                        <!-- Username -->
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="user" value="{{ current_user.username }}" name="user" required readonly>
+                        </div>
+
+                        <!-- Gender -->
+                        <div class="form-group">
+                            <select class="form-control" id="gender" name="gender" required>
+                                <option value="" disabled selected>Select Gender</option>
+                                <option value="Male">Male</option>
+                                <option value="Female">Female</option>
+                                <option value="Others">Others</option>
+                            </select>
+                        </div>
+
+                        <!-- Room -->
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="room" placeholder="Enter Room" required>
+                        </div>
+
+                        <!-- Building -->
+                        <div class="form-group">
+                            <input type="text" class="form-control" name="building" placeholder="Building" required>
+                        </div>
+
+                        <!-- Time -->
+                        <div class="form-group">
+                            <input type="time" class="form-control" name="time" required>
+                        </div>
+
+                        <!-- Date -->
+                        <div class="form-group">
+                            <input type="date" class="form-control" name="date" required>
+                        </div>
+
+                        <!-- Slot -->
+                        <div class="form-group">
+                            <select class="form-control" id="slot" name="slot" required>
+                                <option value="" disabled selected>Choose Slot</option>
+                                <option value="morning">Morning</option>
+                                <option value="evening">Evening</option>
+                                <option value="night">Night</option>
+                            </select>
+                        </div>
+
+                        <!-- Description -->
+                        <div class="form-group">
+                            <textarea class="form-control" id="description" name="description" placeholder="Description" required></textarea>
+                        </div>
+
+                        <!-- Class Code -->
+                        <div class="form-group">
+                            <textarea class="form-control" id="classcode" name="classcode" placeholder="Class Code" required></textarea>
+                        </div>
+
+                        <!-- Subject Code -->
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="subjectcode" name="subjectcode" placeholder="Subject Code" required>
+                        </div>
+
+                        <!-- Department -->
+                        <div class="form-group">
+                            <select class="form-control" id="dept" name="dept" required>
+                                <option value="" disabled selected>Select Department</option>
+                                <option value="IT">IT</option>
+                            </select>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn custom-btn btn-block">Confirm Booking</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Available Rooms Section -->
+            <div class="available-rooms-column">
+                <div class="card custom-card">
+                    <img src="/static/images/lnu1.jpg" class="card-img-top img-fluid" alt="Room Image">
+                    <div class="card-body text-center">
+                        <h5 class="rooms-title">Available Rooms</h5>
+                        <p class="card-text">Choose from available options:</p>
+                    </div>
+                    <ul class="list-group list-group-flush available-rooms">
+                        <li class="list-group-item">COMLAB1</li>
+                        <li class="list-group-item">COMLAB2</li>
+                        <li class="list-group-item">COMLAB3</li>
+                    </ul>
+                    <div class="card-body text-center">
+                        <a href="#" class="custom-link">Contact Us</a>
+                        <a href="#" class="custom-link">About Us</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

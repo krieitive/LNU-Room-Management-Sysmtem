@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard
+{% endblock title %}
+
+{% block css %}
+{% endblock css %}
+
+{% block body %}
+<div class="dashboard-container">
+    <div class="welcome-box">
+        <h1>Welcome to the Dashboard</h1>
+        <p>Manage your bookings, rooms, and more.</p>
+    </div>
+
+    <div class="action-buttons">
+        <button class="action-button">View Rooms</button>
+        <button class="action-button">Apply Now</button>
+        <button class="action-button">Check Bookings</button>
+    </div>
+
+    <!-- Table section -->
+    <div class="table-section">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Gender</th>
+                    <th>Room</th>
+                    <th>Building</th>
+                    <th>Time</th>
+                    <th>Date</th>
+                    <th>Slot</th>
+                    <th>Description</th>
+                    <th>Class Code</th>
+                    <th>Subject Code</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% if query %}
+                    {% for post in query %}
+                    <tr>
+                        <th scope="row">{{ loop.index }}</th>
+                        <td>{{ post.gender }}</td>
+                        <td>{{ post.room }}</td>
+                        <td>{{ post.building }}</td>
+                        <td>{{ post.time }}</td>
+                        <td>{{ post.date }}</td>
+                        <td>{{ post.slot }}</td>
+                        <td>{{ post.description }}</td>
+                        <td>{{ post.classcode }}</td>
+                        <td>{{ post.subjectcode }}</td>
+                    </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="10">No bookings found.</td>
+                    </tr>
+                {% endif %}
+            </tbody>    
+        </table>
+    </div>
+</div>
+
+{% endblock body %}
